@@ -8,7 +8,7 @@ export default class Car extends Component {
       name: "",
       price: "",
       desc: "",
-      data: JSON.parse(localStorage.getItem("carData")) || [], // Ma'lumotni localStorage'dan olish
+      data: JSON.parse(localStorage.getItem("carData")) || [],
       editId: null,
     };
   }
@@ -18,7 +18,6 @@ export default class Car extends Component {
     const { name, price, desc, editId, data } = this.state;
 
     if (editId) {
-      // Tahrirlash rejimi
       const updatedData = data.map((item) =>
         item.id === editId ? { ...item, name, price, desc } : item
       );
@@ -31,7 +30,6 @@ export default class Car extends Component {
       });
       localStorage.setItem("carData", JSON.stringify(updatedData));
     } else {
-      // Yangi mashina qo'shish
       const newCar = {
         id: Date.now(),
         name,
